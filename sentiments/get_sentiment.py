@@ -24,11 +24,11 @@ def get_sentiment(data):
         score = analyzer.polarity_scores(comment)
         sentiment_probab.append(score['compound'])
         if score['compound'] > 0.05:
-            sentiments.append('pos')
+            sentiments.append('pos')  # pos - positive
         elif score['compound'] < -0.05:
-            sentiments.append('neg')
+            sentiments.append('neg')  # neg - negative
         else:
-            sentiments.append('neu')
+            sentiments.append('neu')  # neu - neutral
     data['sentiments'] = sentiments
     data['compound'] = sentiment_probab
     return data
