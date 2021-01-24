@@ -3,6 +3,8 @@ import pickle
 import nltk
 from nltk.corpus import stopwords
 
+nltk.download('stopwords')
+
 #load encoder and model
 with open(r'sentiments/encoder_model', 'rb') as f:
     encoder_model = pickle.load(f)
