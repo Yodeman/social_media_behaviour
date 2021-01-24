@@ -4,7 +4,7 @@ import nltk
 from nltk.corpus import stopwords
 
 #load encoder and model
-with open(r'.\encoder_model', 'rb') as f:
+with open(r'sentiments\encoder_model', 'rb') as f:
     encoder_model = pickle.load(f)
     encoder, model = encoder_model['encoder'], encoder_model['model']
 
