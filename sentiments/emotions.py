@@ -4,6 +4,7 @@ import nltk
 from nltk.corpus import stopwords
 
 nltk.download('stopwords')
+nltk.download('wordnet')
 
 #load encoder and model
 with open(r'sentiments/encoder_model', 'rb') as f:
