@@ -4,12 +4,12 @@ import nltk
 from nltk.corpus import stopwords
 
 #load encoder and model
-with open('encoder_model', 'rb') as f:
+with open(r'.\encoder_model', 'rb') as f:
     encoder_model = pickle.load(f)
     encoder, model = encoder_model['encoder'], encoder_model['model']
 
 #load sentiment classifier
-with open(r"C:\Users\USER\Desktop\social\classifier\classifier", 'rb') as f:
+with open(r"..\classifier\classifier", 'rb') as f:
     classifier, _, _ = pickle.load(f)
     
 def transform(comment):
