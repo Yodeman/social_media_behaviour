@@ -2,17 +2,17 @@ import streamlit as st
 import pickle
 import nltk
 from nltk.corpus import stopwords
+import cv2
 
-nltk.download('stopwords')
-nltk.download('wordnet')
+WIDTH, HEIGHT = 250, 250
 
 #load encoder and model
-with open(r'sentiments/encoder_model', 'rb') as f:
+with open('encoder_model', 'rb') as f:
     encoder_model = pickle.load(f)
     encoder, model = encoder_model['encoder'], encoder_model['model']
 
 #load sentiment classifier
-with open(r"classifier/classifier", 'rb') as f:
+with open(r"C:\Users\USER\Desktop\social\classifier\classifier", 'rb') as f:
     classifier, _, _ = pickle.load(f)
     
 def transform(comment):
@@ -38,10 +38,26 @@ def predict(comment):
     encoded_comment = encoder.transform([comment])
     emotion = model.predict(encoded_comment)
     return emotion
+# read images
+pl_st = cv2.imread('./Politics_stats.png')
+plt_st =  cv2.cvtColor(pl_st, cv2.COLOR_RGB2BGR)
+he_st = cv2.imread('./Health_stats.png')
+he_st =  cv2.cvtColor(he_st, cv2.COLOR_RGB2BGR)
+ed_st = cv2.imread('./Education_stats.png')
+ed_st =  cv2.cvtColor(ed_st, cv2.COLOR_RGB2BGR)
 
 def run():
     st.title('Emotion Classifier')
-    st.write('This app is created to predict the emotion of the user with the comment.\nIt shows the sentiment of the comment too.')
+    st.write("""
+                This app is created to predict the emotion of the user. The data used to train the model are
+                the comments collected from nairaland.com. The data used are from the education, politics and 
+                health category of the news website.
+                This app shows the sentiment of the provided comment too.
+             """)
+    col1, col2, col3 = st.beta_columns(3)
+    with col1:st.image(pl_st, width=WIDTH, height=WIDTH)
+    with col2:st.image(he_st, width=WIDTH, height=WIDTH)
+    with col3:st.image(ed_st, width=WIDTH, height=WIDTH)
     comment = st.text_area('Enter text')
     emotion = ''
     if st.button('Predict'):
