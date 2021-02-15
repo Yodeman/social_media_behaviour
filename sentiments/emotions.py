@@ -1,8 +1,9 @@
 import streamlit as st
+import numpy as np
 import pickle
 import nltk
 from nltk.corpus import stopwords
-import cv2
+from PIL import Image
 
 WIDTH, HEIGHT = 250, 250
 
@@ -38,13 +39,11 @@ def predict(comment):
     encoded_comment = encoder.transform([comment])
     emotion = model.predict(encoded_comment)
     return emotion
+
 # read images
-pl_st = cv2.imread('./Politics_stats.png')
-plt_st =  cv2.cvtColor(pl_st, cv2.COLOR_RGB2BGR)
-he_st = cv2.imread('./Health_stats.png')
-he_st =  cv2.cvtColor(he_st, cv2.COLOR_RGB2BGR)
-ed_st = cv2.imread('./Education_stats.png')
-ed_st =  cv2.cvtColor(ed_st, cv2.COLOR_RGB2BGR)
+pl_st = np.asarray(Image.open('./Politics_stats.png').convert('RGB'))
+he_st = np.asarray(Image.open('./Health_stats.png').convert('RGB'))
+ed_st = np.asarray(Image.open('./Education_stats.png').convert('RGB'))
 
 def run():
     st.title('Emotion Classifier')
