@@ -41,9 +41,9 @@ def predict(comment):
     return emotion
 
 # read images
-pl_st = np.asarray(Image.open('./Politics_stats.png').convert('RGB'))
-he_st = np.asarray(Image.open('./Health_stats.png').convert('RGB'))
-ed_st = np.asarray(Image.open('./Education_stats.png').convert('RGB'))
+pl_st = np.asarray(Image.open('sentiments/Politics_stats.png').convert('RGB'))
+he_st = np.asarray(Image.open('sentiments/Health_stats.png').convert('RGB'))
+ed_st = np.asarray(Image.open('sentiments/Education_stats.png').convert('RGB'))
 
 def run():
     st.title('Emotion Classifier')
