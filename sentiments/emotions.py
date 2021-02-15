@@ -41,9 +41,12 @@ def predict(comment):
     return emotion
 
 # read images
-pl_st = np.asarray(Image.open('sentiments/Politics_stats.png').convert('RGB'))
+"""pl_st = np.asarray(Image.open('sentiments/Politics_stats.png').convert('RGB'))
 he_st = np.asarray(Image.open('sentiments/Health_stats.png').convert('RGB'))
-ed_st = np.asarray(Image.open('sentiments/Education_stats.png').convert('RGB'))
+ed_st = np.asarray(Image.open('sentiments/Education_stats.png').convert('RGB'))"""
+pl_st = Image.open('sentiments/Politics_stats.png')
+he_st = Image.open('sentiments/Health_stats.png')
+ed_st = Image.open('sentiments/Education_stats.png')
 
 def run():
     st.title('Emotion Classifier')
@@ -54,9 +57,12 @@ def run():
                 This app shows the sentiment of the provided comment too.
              """)
     col1, col2, col3 = st.beta_columns(3)
-    with col1:st.image(pl_st, width=WIDTH, height=WIDTH)
+    """with col1:st.image(pl_st, width=WIDTH, height=WIDTH)
     with col2:st.image(he_st, width=WIDTH, height=WIDTH)
-    with col3:st.image(ed_st, width=WIDTH, height=WIDTH)
+    with col3:st.image(ed_st, width=WIDTH, height=WIDTH)"""
+    col1.image(pl_st, use_column_width=True)
+    col2.image(he_st, use_column_width=True)
+    col3.image(ed_st, use_column_width=True)
     comment = st.text_area('Enter text')
     emotion = ''
     if st.button('Predict'):
