@@ -7,7 +7,7 @@ import cv2
 WIDTH, HEIGHT = 250, 250
 
 #load encoder and model
-with open('./encoder_model', 'rb') as f:
+with open('encoder_model', 'rb') as f:
     encoder_model = pickle.load(f)
     encoder, model = encoder_model['encoder'], encoder_model['model']
 
