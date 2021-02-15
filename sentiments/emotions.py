@@ -7,12 +7,12 @@ import cv2
 WIDTH, HEIGHT = 250, 250
 
 #load encoder and model
-with open(r'.\encoder_model', 'rb') as f:
+with open('sentiments/encoder_model', 'rb') as f:
     encoder_model = pickle.load(f)
     encoder, model = encoder_model['encoder'], encoder_model['model']
 
 #load sentiment classifier
-with open(r"..\classifier\classifier", 'rb') as f:
+with open("./classifier/classifier", 'rb') as f:
     classifier, _, _ = pickle.load(f)
     
 def transform(comment):
