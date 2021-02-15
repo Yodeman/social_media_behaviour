@@ -7,6 +7,7 @@ from PIL import Image
 
 
 nltk.download('stopwords')
+nltk.download('wordnet')
 
 WIDTH, HEIGHT = 250, 250
 
