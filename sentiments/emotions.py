@@ -5,6 +5,9 @@ import nltk
 from nltk.corpus import stopwords
 from PIL import Image
 
+
+nltk.download('stopwords')
+
 WIDTH, HEIGHT = 250, 250
 
 #load encoder and model
